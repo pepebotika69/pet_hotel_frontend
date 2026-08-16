@@ -21,9 +21,10 @@ export default function App() {
   const [hotels, setHotels] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const apiUrl = import.meta.env.VITE_PET_HOTEL_BACKEND || 'http://localhost:8088'
 
   useEffect(() => {
-    fetch('http://localhost:8088/pet_hotel/api/hotels')
+    fetch(`${apiUrl}` + '/pet_hotel/api/hotels')
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         return res.json()
